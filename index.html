@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Distance Between Two Cities</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="css/sweetalert2.min.css">
+  </head>
+  <style>
+    .container-map {
+      width: 100%;
+      height: 20rem;
+      margin: 1rem auto;
+    }
+  </style>
+  <body>
+    <main class="container">
+      <form id="distance_form">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Origen</label>
+            <input class="form-control" id="origen" placeholder="Mejicanos, San Salvador" name="origin"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect2">Destinos</label>
+          <select multiple class="form-control" id="destinos" name="destinos">
+          </select>
+        <button type="button" class="btn btn-danger" onclick="document.getElementById('destinos').innerHTML = ''" style="margin-top:5px">Reiniciar</button>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-9">
+            <label for="inputEmail4">Agregar destinos</label>
+            <input type="email" class="form-control" id="destino" name="destino" placeholder="San Salvador, San Salvador"/>
+          </div>
+          <div class="form-group col-3">
+            <button type="button" onclick="addDestino(document.getElementById('destino').value)" class="btn btn-success" style="margin-top:30px" >Agregar</button>
+          </div>
+        </div>
+        <div class="row container justify-content-between">
+            <button type="button" class="btn btn-primary col-4" onclick="calcRoute()">Calcular</button>
+            <button type="button" class="btn btn-danger col-7" onclick="clearRoute()">Limpiar todo</button>
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic example" style="margin-top:10px">
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#distancia">Tiempo y distancia</button>
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#direcciones">Indicaciones</button>
+        </div>
+          
+      </form>
+    </main>
+        
+    <div class="container-map" id="google-map"></div>
+    <div class="modal fade" id="distancia" tabindex="-1" role="dialog" aria-labelledby="distanciaTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="distanciaTitle">Tiempo y distancia</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="distanciaBody">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="direcciones" tabindex="-1" role="dialog" aria-labelledby="direccionesTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="direccionesTitle">Indicaciones</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="" id="direccionesBody">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+            </div>
+        </div>
+    </div>
+  </body>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/sweetalert2.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBm2PkmSzcBqGS9oRbm7p3Q9MhsBclsOsw&libraries=places"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="js/main.js"></script>
+</html>
